@@ -1,3 +1,0 @@
-[console_scripts]
-yolo = yolo.yolo:main
-
