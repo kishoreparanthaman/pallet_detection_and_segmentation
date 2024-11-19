@@ -67,6 +67,10 @@ ros2 run yolo yolo
 ros2 run segment segment
 ```
 
+
+## Demo Video
+[Watch the demo video here](https://drive.google.com/file/d/1IAEkvSWvUxamTzB7g2gyPRht3cmXHJ_U/view?usp=drive_link)
+
 ### Acknowledgments
 YOLOv11: Ultralytics
 SegFormer: NVIDIA SegFormer
