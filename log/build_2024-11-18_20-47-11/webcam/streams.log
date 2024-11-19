@@ -1,0 +1,21 @@
+[0.617s] Invoking command in '/home/kishore/pallet/src/webcam': PYTHONPATH=/home/kishore/pallet/build/webcam/prefix_override:/home/kishore/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/kishore/pallet/install/webcam/lib/python3.10/site-packages:${PYTHONPATH} ROS_DOMAIN_ID=228 /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/webcam build --build-base /home/kishore/pallet/build/webcam/build install --record /home/kishore/pallet/build/webcam/install.log --single-version-externally-managed install_data
+[0.767s] running egg_info
+[0.768s] writing ../../build/webcam/webcam.egg-info/PKG-INFO
+[0.768s] writing dependency_links to ../../build/webcam/webcam.egg-info/dependency_links.txt
+[0.768s] writing entry points to ../../build/webcam/webcam.egg-info/entry_points.txt
+[0.768s] writing requirements to ../../build/webcam/webcam.egg-info/requires.txt
+[0.768s] writing top-level names to ../../build/webcam/webcam.egg-info/top_level.txt
+[0.769s] reading manifest file '../../build/webcam/webcam.egg-info/SOURCES.txt'
+[0.770s] writing manifest file '../../build/webcam/webcam.egg-info/SOURCES.txt'
+[0.770s] running build
+[0.770s] running build_py
+[0.770s] running install
+[0.770s] running install_lib
+[0.770s] running install_data
+[0.770s] running install_egg_info
+[0.771s] removing '/home/kishore/pallet/install/webcam/lib/python3.10/site-packages/webcam-0.0.0-py3.10.egg-info' (and everything under it)
+[0.772s] Copying ../../build/webcam/webcam.egg-info to /home/kishore/pallet/install/webcam/lib/python3.10/site-packages/webcam-0.0.0-py3.10.egg-info
+[0.772s] running install_scripts
+[0.783s] Installing webcam script to /home/kishore/pallet/install/webcam/lib/webcam
+[0.783s] writing list of installed files to '/home/kishore/pallet/build/webcam/install.log'
+[0.796s] Invoked command in '/home/kishore/pallet/src/webcam' returned '0': PYTHONPATH=/home/kishore/pallet/build/webcam/prefix_override:/home/kishore/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/kishore/pallet/install/webcam/lib/python3.10/site-packages:${PYTHONPATH} ROS_DOMAIN_ID=228 /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/webcam build --build-base /home/kishore/pallet/build/webcam/build install --record /home/kishore/pallet/build/webcam/install.log --single-version-externally-managed install_data

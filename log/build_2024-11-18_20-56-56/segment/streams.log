@@ -1,0 +1,24 @@
+[0.763s] Invoking command in '/home/kishore/pallet/src/segment': PYTHONPATH=/home/kishore/pallet/build/segment/prefix_override:/home/kishore/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/kishore/pallet/install/segment/lib/python3.10/site-packages:${PYTHONPATH} ROS_DOMAIN_ID=68 /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/segment build --build-base /home/kishore/pallet/build/segment/build install --record /home/kishore/pallet/build/segment/install.log --single-version-externally-managed install_data
+[0.906s] running egg_info
+[0.907s] writing ../../build/segment/segment.egg-info/PKG-INFO
+[0.907s] writing dependency_links to ../../build/segment/segment.egg-info/dependency_links.txt
+[0.908s] writing entry points to ../../build/segment/segment.egg-info/entry_points.txt
+[0.908s] writing requirements to ../../build/segment/segment.egg-info/requires.txt
+[0.909s] writing top-level names to ../../build/segment/segment.egg-info/top_level.txt
+[0.911s] reading manifest file '../../build/segment/segment.egg-info/SOURCES.txt'
+[0.911s] writing manifest file '../../build/segment/segment.egg-info/SOURCES.txt'
+[0.911s] running build
+[0.912s] running build_py
+[0.912s] copying segment/segment.py -> /home/kishore/pallet/build/segment/build/lib/segment
+[0.912s] running install
+[0.912s] running install_lib
+[0.912s] copying /home/kishore/pallet/build/segment/build/lib/segment/segment.py -> /home/kishore/pallet/install/segment/lib/python3.10/site-packages/segment
+[0.912s] byte-compiling /home/kishore/pallet/install/segment/lib/python3.10/site-packages/segment/segment.py to segment.cpython-310.pyc
+[0.913s] running install_data
+[0.913s] running install_egg_info
+[0.913s] removing '/home/kishore/pallet/install/segment/lib/python3.10/site-packages/segment-0.0.0-py3.10.egg-info' (and everything under it)
+[0.913s] Copying ../../build/segment/segment.egg-info to /home/kishore/pallet/install/segment/lib/python3.10/site-packages/segment-0.0.0-py3.10.egg-info
+[0.913s] running install_scripts
+[0.924s] Installing segment script to /home/kishore/pallet/install/segment/lib/segment
+[0.924s] writing list of installed files to '/home/kishore/pallet/build/segment/install.log'
+[0.940s] Invoked command in '/home/kishore/pallet/src/segment' returned '0': PYTHONPATH=/home/kishore/pallet/build/segment/prefix_override:/home/kishore/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/kishore/pallet/install/segment/lib/python3.10/site-packages:${PYTHONPATH} ROS_DOMAIN_ID=68 /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/segment build --build-base /home/kishore/pallet/build/segment/build install --record /home/kishore/pallet/build/segment/install.log --single-version-externally-managed install_data

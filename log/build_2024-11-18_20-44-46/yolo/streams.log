@@ -1,0 +1,24 @@
+[0.604s] Invoking command in '/home/kishore/pallet/src/yolo': PYTHONPATH=/home/kishore/pallet/build/yolo/prefix_override:/home/kishore/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/kishore/pallet/install/yolo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/yolo build --build-base /home/kishore/pallet/build/yolo/build install --record /home/kishore/pallet/build/yolo/install.log --single-version-externally-managed install_data
+[0.763s] running egg_info
+[0.763s] writing ../../build/yolo/yolo.egg-info/PKG-INFO
+[0.764s] writing dependency_links to ../../build/yolo/yolo.egg-info/dependency_links.txt
+[0.764s] writing entry points to ../../build/yolo/yolo.egg-info/entry_points.txt
+[0.764s] writing requirements to ../../build/yolo/yolo.egg-info/requires.txt
+[0.764s] writing top-level names to ../../build/yolo/yolo.egg-info/top_level.txt
+[0.766s] reading manifest file '../../build/yolo/yolo.egg-info/SOURCES.txt'
+[0.766s] writing manifest file '../../build/yolo/yolo.egg-info/SOURCES.txt'
+[0.766s] running build
+[0.766s] running build_py
+[0.766s] copying yolo/yolo.py -> /home/kishore/pallet/build/yolo/build/lib/yolo
+[0.766s] running install
+[0.766s] running install_lib
+[0.766s] copying /home/kishore/pallet/build/yolo/build/lib/yolo/yolo.py -> /home/kishore/pallet/install/yolo/lib/python3.10/site-packages/yolo
+[0.766s] byte-compiling /home/kishore/pallet/install/yolo/lib/python3.10/site-packages/yolo/yolo.py to yolo.cpython-310.pyc
+[0.767s] running install_data
+[0.767s] running install_egg_info
+[0.768s] removing '/home/kishore/pallet/install/yolo/lib/python3.10/site-packages/yolo-0.0.0-py3.10.egg-info' (and everything under it)
+[0.768s] Copying ../../build/yolo/yolo.egg-info to /home/kishore/pallet/install/yolo/lib/python3.10/site-packages/yolo-0.0.0-py3.10.egg-info
+[0.769s] running install_scripts
+[0.780s] Installing yolo script to /home/kishore/pallet/install/yolo/lib/yolo
+[0.780s] writing list of installed files to '/home/kishore/pallet/build/yolo/install.log'
+[0.795s] Invoked command in '/home/kishore/pallet/src/yolo' returned '0': PYTHONPATH=/home/kishore/pallet/build/yolo/prefix_override:/home/kishore/.local/lib/python3.10/site-packages/colcon_core/task/python/colcon_distutils_commands:/home/kishore/pallet/install/yolo/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/yolo build --build-base /home/kishore/pallet/build/yolo/build install --record /home/kishore/pallet/build/yolo/install.log --single-version-externally-managed install_data

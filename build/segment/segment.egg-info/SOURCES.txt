@@ -1,0 +1,16 @@
+package.xml
+setup.cfg
+setup.py
+../../build/segment/segment.egg-info/PKG-INFO
+../../build/segment/segment.egg-info/SOURCES.txt
+../../build/segment/segment.egg-info/dependency_links.txt
+../../build/segment/segment.egg-info/entry_points.txt
+../../build/segment/segment.egg-info/requires.txt
+../../build/segment/segment.egg-info/top_level.txt
+../../build/segment/segment.egg-info/zip-safe
+resource/segment
+segment/__init__.py
+segment/segment.py
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py
