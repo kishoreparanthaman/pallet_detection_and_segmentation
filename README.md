@@ -75,6 +75,11 @@ ros2 run webcam webcam
 
 ```
 
+## Yolo file 
+https://drive.google.com/drive/folders/1nVtg5VzKbZHPrP5fA8Dd57YqjTuXNdeC?usp=drive_link
+
+## Segformer file
+https://drive.google.com/drive/folders/1tBDcsmeDQOOjjswKBLDSOwEXeBldhlfi?usp=drive_link
 
 ## Demo Video
 [Watch the demo video here](https://drive.google.com/file/d/1IAEkvSWvUxamTzB7g2gyPRht3cmXHJ_U/view?usp=drive_link)
