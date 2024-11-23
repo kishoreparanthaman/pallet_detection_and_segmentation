@@ -61,12 +61,18 @@ Replace the path with the location of your downloaded YOLOv11 model.
 ```bash
 ros2 run yolo yolo
 ```
+Sample ouput video - https://drive.google.com/file/d/1pwIeYkG5y7tFN2r0qgqt-1Ae_rIF-Oc6/view?usp=sharing
+
 ### Run the SegFormer Segmentation Node - Subscribes to /robot1/zed2i/left/image_rect_color topic
 ```bash
 ros2 run segment segment
 ```
+Sample ouput video - https://drive.google.com/file/d/1jU90dJTOsXlCAEP9cJXOuRT3d40lYWQP/view?usp=sharing
 
 #### Run your bag file, the above nodes will subscribe to /robot1/zed2i/left/image_rect_color topic and will publish the output
+```bash
+while true; do ros2 bag play <path_to_bag_file>; done
+```
 
 
 ### Run the Camera Node (if you need to check live camera feed)
