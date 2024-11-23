@@ -1,5 +1,6 @@
 import rclpy
 from rclpy.node import Node
+from rclpy.qos import QoSProfile, ReliabilityPolicy
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge
 import cv2
@@ -10,73 +11,83 @@ from ultralytics import YOLO
 class YOLOSubscriber(Node):
     def __init__(self):
         super().__init__('yolo_subscriber')
-        
-        # Subscribe to the 'webcam_image' topic
+
+        # Define QoS Profile
+        qos_profile = QoSProfile(
+            reliability=ReliabilityPolicy.BEST_EFFORT,
+            depth=10
+        )
+
+        # Subscribe to the '/robot1/zed2i/left/image_rect_color' topic
         self.subscription = self.create_subscription(
             Image,
-            'webcam_image',
+            '/robot1/zed2i/left/image_rect_color',
             self.listener_callback,
-            10)
-        self.subscription  # prevent unused variable warning
-        
+            qos_profile)
+
         # Initialize CvBridge
         self.bridge = CvBridge()
 
-        # Load the trained YOLO model
-        self.model = YOLO('/home/kishore/peer_ros2/src/yolo/runs/detect/train19/weights/best.pt')
+        # Load YOLO model
+        self.model = YOLO('/home/kishore/peer_ros2/src/yolo/runs/detect/train20/weights/best.pt')
 
         # Initialize annotators
         self.bounding_box_annotator = sv.BoxAnnotator()
         self.label_annotator = sv.LabelAnnotator()
 
         # Define a confidence threshold
-        self.CONFIDENCE_THRESHOLD = 0.5
+        self.CONFIDENCE_THRESHOLD = 0.6
 
     def listener_callback(self, msg):
-        # Convert ROS Image message to OpenCV image
-        frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+        try:
+            # Convert ROS Image message to OpenCV image
+            frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
 
-        # Perform inference
-        results = self.model(frame)[0]
-        detections = sv.Detections.from_ultralytics(results)
+            # Resize the frame to the model's expected input size (640x640)
+            resized_frame = cv2.resize(frame, (640, 640))
 
-        # Initialize lists to hold filtered results
+            # Perform YOLO inference
+            results = self.model(resized_frame)[0]
+            detections = sv.Detections.from_ultralytics(results)
+
+            # Filter detections based on confidence
+            detections = self.filter_detections(detections)
+
+            # Annotate frame with detections
+            annotated_image = self.bounding_box_annotator.annotate(scene=resized_frame, detections=detections)
+            annotated_image = self.label_annotator.annotate(scene=annotated_image, detections=detections)
+
+            # Display the annotated frame
+            cv2.imshow('YOLO Detection', annotated_image)
+            if cv2.waitKey(1) & 0xFF == 27:
+                self.get_logger().info("Shutting down...")
+                cv2.destroyAllWindows()
+                rclpy.shutdown()
+        except Exception as e:
+            self.get_logger().error(f"Error in callback: {e}")
+
+    def filter_detections(self, detections):
         filtered_boxes = []
         filtered_labels = []
         filtered_confidences = []
 
-        # Filter detections based on confidence score
         for box, confidence, class_id in zip(detections.xyxy, detections.confidence, detections.class_id):
             if confidence >= self.CONFIDENCE_THRESHOLD:
-                x1, y1, x2, y2 = box
-                class_name = f"Class {class_id}"
-                print(f"Accepted: Class: {class_name}, Confidence: {confidence:.2f}, Box: [{x1}, {y1}, {x2}, {y2}]")
-                
-                # Append filtered data
                 filtered_boxes.append(box)
-                filtered_labels.append(class_name)
+                filtered_labels.append(f"Class {class_id}")
                 filtered_confidences.append(confidence)
 
-        # Convert filtered boxes back to a NumPy array
         if filtered_boxes:
             detections.xyxy = np.array(filtered_boxes)
             detections.labels = filtered_labels
             detections.confidence = np.array(filtered_confidences)
         else:
-            # If no detections, set empty arrays
             detections.xyxy = np.empty((0, 4))
             detections.labels = []
             detections.confidence = np.empty(0)
 
-        # Annotate the frame with bounding boxes and labels
-        annotated_image = self.bounding_box_annotator.annotate(scene=frame, detections=detections)
-        annotated_image = self.label_annotator.annotate(scene=annotated_image, detections=detections)
+        return detections
 
-        # Display the annotated frame
-        cv2.imshow('YOLO Detection', annotated_image)
-        if cv2.waitKey(1) & 0xFF == 27:
-            cv2.destroyAllWindows()
-            rclpy.shutdown()
 
 def main(args=None):
     rclpy.init(args=args)
@@ -89,6 +100,7 @@ def main(args=None):
         node.destroy_node()
         cv2.destroyAllWindows()
         rclpy.shutdown()
+
 
 if __name__ == '__main__':
     main()
