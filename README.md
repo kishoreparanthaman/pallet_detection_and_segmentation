@@ -34,7 +34,7 @@ source install/setup.bash
 
 ### Download models
 
-Download the YOLO Custom Trained Model - https://drive.google.com/file/d/1UZezhEBtZi44BfhX1hj9UHsltKU-QNth/view?usp=drive_link
+Download the YOLO Custom Trained Model - https://drive.google.com/file/d/1UqhHRqGX2yC2eVbasTV7Wdp12em_XPsx/view?usp=drive_link
 Download the SegFormer Checkpoint - https://drive.google.com/file/d/1hCST1jd683jxoHfHpGDp5roXRUVrC1BX/view?usp=drive_link
 
 ### Update Paths
