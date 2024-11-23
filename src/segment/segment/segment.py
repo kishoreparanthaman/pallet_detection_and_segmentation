@@ -8,17 +8,24 @@ from transformers import SegformerForSemanticSegmentation, SegformerFeatureExtra
 import torch
 import torch.nn.functional as F
 from PIL import Image as PILImage
+from rclpy.qos import QoSProfile, ReliabilityPolicy
 
 class SegformerSubscriber(Node):
     def __init__(self):
         super().__init__('segformer_subscriber')
+
+        # Define QoS Profile
+        qos_profile = QoSProfile(
+            reliability=ReliabilityPolicy.BEST_EFFORT,
+            depth=10
+        )
         
         # Subscribe to the 'webcam_image' topic
         self.subscription = self.create_subscription(
             Image,
-            'webcam_image',
+            '/robot1/zed2i/left/image_rect_color',
             self.listener_callback,
-            10)
+            qos_profile)
         self.subscription  # prevent unused variable warning
         
         # Initialize CvBridge
@@ -32,7 +39,7 @@ class SegformerSubscriber(Node):
         )
 
         # Load your custom checkpoint
-        checkpoint_path = "/home/kishore/peer_ros2/src/segformer/lightning_logs/version_7/checkpoints/epoch=9-step=1150.ckpt"
+        checkpoint_path = "/home/kishore/peer_ros2/src/segformer/lightning_logs/version_9/checkpoints/epoch=199-step=23000.ckpt"
         checkpoint = torch.load(checkpoint_path)
         state_dict = checkpoint["state_dict"]
         self.model.load_state_dict({k.replace("model.", ""): v for k, v in state_dict.items()})
@@ -56,6 +63,7 @@ class SegformerSubscriber(Node):
     def listener_callback(self, msg):
         # Convert ROS Image message to OpenCV image
         frame = self.bridge.imgmsg_to_cv2(msg, desired_encoding='bgr8')
+        
 
         # Preprocess the frame for the model
         pixel_values = self.preprocess_frame(frame)
