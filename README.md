@@ -6,22 +6,25 @@ This repository uses **YOLOv11** and **SegFormer** for detection and semantic se
 
 ## Setup Instructions
 
-### 1. Create a ROS2 Workspace
-```bash
-mkdir -p ~/pallet/src
-cd ~/pallet/src
-```
 
-### 2. Clone the Repository
+### 1. Clone the Repository
 ```bash
+cd
 git clone https://github.com/kishoreparanthaman/pallet_detection_and_segmentation.git
 
 ```
+
+### 1. Create a ROS2 Workspace
+```bash
+cd pallet_detection_and_segmentation/
+
+```
+
+
 ### 3. Build the Workspace
 
 
 ```bash
-cd ~/pallet
 source /opt/ros/humble/setup.bash
 colcon build
 source install/setup.bash
@@ -53,18 +56,23 @@ Replace the path with the location of your downloaded YOLOv11 model.
 
 
 ### Running the Nodes
-### Run the Camera Node
-```bash
-ros2 run webcam webcam
 
-```
-### Run the YOLO Detection Node
+### Run the YOLO Detection Node - Subscribes to /robot1/zed2i/left/image_rect_color topic
 ```bash
 ros2 run yolo yolo
 ```
-### Run the SegFormer Segmentation Node
+### Run the SegFormer Segmentation Node - Subscribes to /robot1/zed2i/left/image_rect_color topic
 ```bash
 ros2 run segment segment
+```
+
+#### Run your bag file, the above nodes will subscribe to /robot1/zed2i/left/image_rect_color topic and will publish the output
+
+
+### Run the Camera Node (if you need to check live camera feed)
+```bash
+ros2 run webcam webcam
+
 ```
 
 
